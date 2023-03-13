@@ -41,9 +41,9 @@ COMMENDATIONS = [
 def get_schoolkid(schoolkid_name: str):
     try:
         return Schoolkid.objects.get(full_name__contains=schoolkid_name)
-    except exceptions.MultipleObjectsReturned:
+    except Schoolkid.MultipleObjectsReturned:
         print(f'Найдено несколько учеников с именем {schoolkid_name}. Повторите поиск')
-    except exceptions.ObjectDoesNotExist:
+    except Schoolkid.DoesNotExist:
         print(f'Ученик с таким именем {schoolkid_name} не найден. Повторите поиск')
 
 
