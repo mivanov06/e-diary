@@ -16,7 +16,7 @@ python manage.py shell
 
 Импортируйте модели с помощью команды:
 ```
-from scripts.py import *
+from scripts import *
 ```
 
 Для начала работы необходимо найти ученика в базе данных, выполнив команду:
