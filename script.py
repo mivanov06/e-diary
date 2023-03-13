@@ -73,8 +73,11 @@ def create_commendation(lesson_name: str, schoolkid_name: str):
         if subject is not None:
             lessons = Lesson.objects.filter(year_of_study=schoolkid.year_of_study, group_letter=schoolkid.group_letter,
                                             subject=subject)
-            lesson = choice(lessons)
-            commendation = Commendation.objects.create(text=choice(COMMENDATIONS), created=lesson.date,
-                                                       schoolkid=schoolkid,
-                                                       subject=lesson.subject, teacher=lesson.teacher)
-            return commendation
+            if lessons is not None:
+                lesson = choice(lessons)
+                commendation = Commendation.objects.create(text=choice(COMMENDATIONS), created=lesson.date,
+                                                           schoolkid=schoolkid,
+                                                           subject=lesson.subject, teacher=lesson.teacher)
+                return commendation
+            else:
+                return f'Не найдено занятий по предмету {subject.title}'
